@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  goelandrss2email:
+    restart: unless-stopped
+    image: slurdge/goeland:latest
+    container_name: goelandrss2email
+    command: daemon --run-at-startup
+    volumes:
+    - /data/containers/goelandrss2email-stack/config/config.toml:/data/config.toml:z
+    - /data/containers/goelandrss2email-stack/config/goeland.db:/goeland.db:z
+    labels:
+    - "com.centurylinklabs.watchtower.enable=true"
